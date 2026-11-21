@@ -11,4 +11,8 @@ router.get("/totalRespostasCertas/:idUsuario", function (req, res) {
   dashboardController.totalRespostasCertas(req, res);
 });
 
+router.get("/evolucao/:idUsuario", function (req, res) {
+  dashboardController.evolucao(req, res);
+})
+
 module.exports = router;

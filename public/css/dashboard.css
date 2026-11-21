@@ -338,6 +338,7 @@ body {
 .header_kpi_evolucao {
     display: flex;
     justify-content: space-around;
+    margin-left: -20px;
 }
 
 .header_kpi_evolucao p {
@@ -357,7 +358,7 @@ body {
 .kpi_total_evolucao #evolucao {
     display: flex;
     padding-left: 25px;
-    color: #EF6A32;
+    color: #172943;
     font-size: 450%;
 }
 

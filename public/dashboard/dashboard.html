@@ -136,21 +136,23 @@
 <script>
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
     const totalAcertosElemento = document.getElementById(`totalAcertos`);
     const totalQuestoes = document.getElementById(`total_questoes`)
     const totalErros = document.getElementById(`totalErros`);
     const errosQuestoes = document.getElementById(`questoes_respondidas`);
+    const evolucaoElemento = document.getElementById(`evolucao`);
     let diferenca = 0;
 
     function totalAcertos(idUsuario) {
         fetch(`/dashboard/totalRespostasCertas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);                    
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
                     totalAcertosElemento.textContent = resposta[0].acertos;
                     totalQuestoes.textContent = ` De ${resposta[0].total_questoes} questões respondidas`;
-                    
+
                     diferenca = resposta[0].total_questoes - resposta[0].acertos;
 
                     totalErros.textContent = diferenca;
@@ -162,9 +164,33 @@
             }
         })
             .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                console.error(`Erro na obtenção dos dados p/ Kpi: ${error.message}`);
             });
     } totalAcertos(sessionStorage.getItem('ID_USUARIO'))
+
+
+    function evolucao(idUsuario) {
+        fetch(`/dashboard/evolucao/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+
+                if (resposta[0].variacao_acertos > 0) {
+                    evolucaoElemento.textContent = ` + ${resposta[0].variacao_acertos}`;
+                } else {
+                    evolucaoElemento.textContent = resposta[0].variacao_acertos;
+                }
+
+            });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+        })
+            .catch (function (error) {
+        console.error(`Erro na obtenção dos dados p/ Kpi: ${error.message}`);
+    });
+    } evolucao(sessionStorage.getItem('ID_USUARIO'))
 
     let proximaAtualizacao;
     // exibirAquario pode ser um nome que eu criarei 

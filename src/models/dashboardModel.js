@@ -39,7 +39,31 @@ async function totalRespostasCertas(idUsuario) {
     return await database.executar(intrucaoKpi);
 }
 
+
+async function evolucao(idUsuario) {
+
+    var intrucaoKpi = `
+        SELECT COALESCE(variacao_acertos, 0) AS variacao_acertos
+        FROM (
+                SELECT t.idTentativa,
+                SUM(a.correta) - LAG(SUM(a.correta)) OVER (ORDER BY t.idTentativa) AS variacao_acertos
+        FROM tentativa_user t
+        JOIN resposta_user r ON r.fk_tentativa = t.idTentativa
+        JOIN alternativa a ON a.idAlternativa = r.fk_alternativa
+        WHERE t.fk_usuario = ${idUsuario}
+        GROUP BY t.idTentativa
+        ) AS evolucao
+        ORDER BY idTentativa DESC
+        LIMIT 1;
+    `;
+
+    console.log("Executando SELECT da kpi de evolução");
+
+    return await database.executar(intrucaoKpi);
+}
+
 module.exports = {
     buscarDesempenhoPorCategoria,
-    totalRespostasCertas
+    totalRespostasCertas,
+    evolucao
 };
