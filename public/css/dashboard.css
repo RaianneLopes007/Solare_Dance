@@ -72,7 +72,7 @@ body {
 
 .nav ul li {
     list-style: none;
-    width: 35%;
+    width: 55%;
 }
 
 .nav a {
@@ -88,18 +88,9 @@ body {
     transform: translateY(-2px);
 }
 
-.btn-studio {
-    display: flex;
-    width: 50%;
-    justify-content: center;
-    align-self: center;
-}
-
-
-
 .hello {
-    width: 100%;
     display: flex;
+    width: 100%;
     justify-content: center;
 }
 
@@ -119,7 +110,7 @@ body {
     color: #F07842;
     align-self: center;
     font-size: 105%;
-    margin-right: 15px;
+    margin-right: 40px;
 }
 
 /* ------------ PRÉ GRÁFICO ----------------*/
@@ -376,9 +367,16 @@ body {
     padding-top: 10px;
 }
 
+.container_grafico {
+    display: flex;
+    justify-content: center;
+}
+
 .grafico {
     display: flex;
-    width: 50%;
+    width: 75%;
     margin-top: 40px;
+    border: solid 2px;
+    border-color: #d6a68f   ;
     background-color: #ffffff;
 }

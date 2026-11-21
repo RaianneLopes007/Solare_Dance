@@ -33,10 +33,6 @@
                 <li><a href="./quiz.html">Quiz</a></li>
                 <li><a href="./dashboard.html">Desempenho</a></li>
 
-                <div class="btn-studio">
-                    <li><a href="#">Studios</a></li>
-                </div>
-
                 <div class="hello">
                     <h3><span id="b_usuario">usuário</span>!</h3>
                 </div>
@@ -125,9 +121,14 @@
 
     </div>
 
-    <div class="grafico">
-        <canvas id="desempenho"></canvas>
+    <div class="container_grafico">
+
+        <div class="grafico">
+            <canvas id="desempenho"></canvas>
+        </div>
+
     </div>
+
 
 </body>
 
@@ -176,20 +177,20 @@
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
 
-                if (resposta[0].variacao_acertos > 0) {
-                    evolucaoElemento.textContent = ` + ${resposta[0].variacao_acertos}`;
-                } else {
-                    evolucaoElemento.textContent = resposta[0].variacao_acertos;
-                }
+                    if (resposta[0].variacao_acertos > 0) {
+                        evolucaoElemento.textContent = ` + ${resposta[0].variacao_acertos}`;
+                    } else {
+                        evolucaoElemento.textContent = resposta[0].variacao_acertos;
+                    }
 
-            });
-    } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-    }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
         })
-            .catch (function (error) {
-        console.error(`Erro na obtenção dos dados p/ Kpi: ${error.message}`);
-    });
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ Kpi: ${error.message}`);
+            });
     } evolucao(sessionStorage.getItem('ID_USUARIO'))
 
     let proximaAtualizacao;
@@ -254,8 +255,7 @@
                 {
                     label: 'Tentativa Atual',
                     data: [],
-                    fill: false,
-                    backgroundColor: 'rgb(255, 165, 0)'
+                    backgroundColor: '#EF6A32'
                 }]
         };
 
@@ -283,6 +283,27 @@
             type: 'bar',
             data: dados,
             options: {
+                layout: {
+                    padding: {
+                        left: 30
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Desempenho por estilo',
+                        color: '#172943',
+                        align: 'start',
+                        font: {
+                            size: 30,
+                            style: 'italic',
+                        },
+                        padding: {
+                            top: 50,
+                            bottom: 20
+                        },
+                    }
+                },
                 scales: {
                     y: {
 

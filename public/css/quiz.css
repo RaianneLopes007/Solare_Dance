@@ -73,7 +73,7 @@ body {
 
 .nav ul li {
   list-style: none;
-  width: 35%;
+  width: 55%;
 }
 
 .nav a {
@@ -88,15 +88,6 @@ body {
   color: #C94E25;
   transform: translateY(-2px);
 }
-
-.btn-studio {
-  display: flex;
-  width: 50%;
-  justify-content: center;
-  align-self: center;
-}
-
-
 
 .hello {
   width: 100%;
