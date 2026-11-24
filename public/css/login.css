@@ -63,12 +63,13 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 90%;
 
 }
 
 .nav ul li {
     list-style: none;
+    margin-right: -60px;
 }
 
 .nav a {

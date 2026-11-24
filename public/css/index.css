@@ -54,7 +54,7 @@ body {
 
 .nav {
     display: flex;
-    width: 35%;
+    width: 30%;
     align-items: center;
 
 }
@@ -63,12 +63,13 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 90%;
 
 }
 
 .nav ul li {
     list-style: none;
+    margin-right: -60px;
 }
 
 .nav a {
@@ -1018,6 +1019,7 @@ body {
     height: 22vh;
     flex-direction: column;
     justify-content: center;
+    margin-top: -15px;
     align-items: center;
 }
 

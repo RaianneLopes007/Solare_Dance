@@ -25,7 +25,6 @@
     <nav class="nav">
       <ul>
         <li><a href="./index.html">Home</a></li>
-        <li><a href="#">Sobre Mim</a></li>
 
         <div class="btn-cadastro">
           <li><a href="./cadastro.html">Cadastro</a></li>
@@ -124,7 +123,7 @@
     if (nomeVar.length > 1 && emailVar.includes('@') && emailVar.includes('.') && senhaVar.length >= 6 && confirmacaoSenhaVar == senhaVar) {
       div_erros_login.innerHTML =
 
-        cardErro.style.display = "flex";
+      cardErro.style.display = "flex";
       mensagem_erro.innerHTML = 'Cadastro realizado com sucesso!'
       mensagem_erro.innerHTML = "Redirecionando para tela de login";
     }
